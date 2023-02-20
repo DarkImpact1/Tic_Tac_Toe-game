@@ -16,8 +16,10 @@ class TicTacToe:
         self.top_frame_left=tk.Frame(root,bg='black',border=4,height=2,width=40,relief='groove')
         tk.Label(self.top_frame_left,text="Player1:",font=('Arial', 20),bg='white',fg='black',border=2,relief='solid').grid(row=1,column=0)
         tk.Label(self.top_frame_left,text="Score: ",font=('Arial', 20),bg='white',fg='black',border=2,relief='solid').grid(row=1,column=1)
-
         self.top_frame_left.grid(row=0,column=0,sticky='nsew')
+        global name1,name2
+        name1=tk.Label(self.top_frame_left,text="Player1",font=('Arial', 20),bg='black',fg='grey')
+        name1.grid(row=2,column=0)
 
 # creating middle frame to fill the gap 
         self.top_frame_middle=tk.Frame(root,bg='black',border=4,height=2,width=40,relief='groove')
@@ -29,6 +31,8 @@ class TicTacToe:
         tk.Label(self.top_frame_right,text="Player2:",font=('Arial', 20),bg='white',fg='black',border=2,relief='solid').grid(row=1,column=0)
         tk.Label(self.top_frame_right,text="Score: ",font=('Arial', 20),bg='white',fg='black',border=2,relief='solid').grid(row=1,column=1)
         self.top_frame_right.grid(row=0,column=2,sticky='nsew',ipadx=2)
+        name2 = tk.Label(self.top_frame_right,text="Player2",font=('Arial', 20),bg='black',fg='orange')
+        name2.grid(row=2,column=0)
 # Creating board and button 
         self.board = [['' for _ in range(3)] for _ in range(3)]
         self.buttons = [[None for _ in range(3)] for _ in range(3)]
@@ -55,12 +59,12 @@ class TicTacToe:
             self.clicked+=1
     # declaring name of first player 
             self.name_of_player1 = simpledialog.askstring(title="Name", prompt="Enter the name of first player:")
-            tk.Label(self.top_frame_left,text=self.name_of_player1.title(),font=('Arial', 20),bg='black',fg='grey').grid(row=2,column=0)
+            name1.config(text=self.name_of_player1.title())
             s1 = tk.Label(self.top_frame_left,text=self.score_of_player1,font=('Arial', 20),bg='black',fg='grey')
             s1.grid(row=2,column=1)
     # declaring name of second player 
             self.name_of_player2 = simpledialog.askstring(title="Name", prompt="Enter the name of Second player:")
-            tk.Label(self.top_frame_right,text=self.name_of_player2.title(),font=('Arial', 20),bg='black',fg='orange').grid(row=2,column=0)
+            name2.config(text=self.name_of_player2.title())
             s2 = tk.Label(self.top_frame_right,text=self.score_of_player2,font=('Arial', 20),bg='black',fg='orange')
             s2.grid(row=2,column=1)
         else:
