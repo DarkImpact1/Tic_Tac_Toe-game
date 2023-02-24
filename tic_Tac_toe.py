@@ -6,7 +6,7 @@ class TicTacToe:
     def __init__(self, root):
         self.root = root
         root.title("Tic Tac Toe")
-        root.geometry("680x365")
+        root.geometry("622x368")
         root.resizable(False, False)
         self.current_player = 'X'
         self.clicked = 0
@@ -23,7 +23,7 @@ class TicTacToe:
 
 # creating middle frame to fill the gap 
         self.top_frame_middle=tk.Frame(root,bg='black',border=4,height=2,width=40,relief='groove')
-        tk.Label(self.top_frame_middle,text="|__TIC_TAC_TOE__|",font=('Arial', 20),bg='black',fg='yellow').pack()
+        tk.Label(self.top_frame_middle,text="TIC_TAC_TOE|",font=('Arial', 20),bg='black',fg='yellow').pack()
         self.top_frame_middle.grid(row=0,column=1,sticky='nsew')
 
 # creating top right frame for player2
@@ -124,12 +124,12 @@ class TicTacToe:
                     return False
         return True
 
-    def pulsing_fg(cls):
+    def pulsing_fg(self):
         fg_colors = ["blue", "red", "green", "orange","white","yellow"]
         current_color = button["fg"]
         next_color = fg_colors[(fg_colors.index(current_color) + 1) % len(fg_colors)]
         button.config(fg=next_color)
-        button.after(50,cls.pulsing_fg) 
+        button.after(50,self.pulsing_fg) 
 # To restart the game 
     def restart(self):
         ques = messagebox.askquestion("RESTART"," Want to restart ?")
