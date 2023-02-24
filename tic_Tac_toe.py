@@ -6,7 +6,7 @@ class TicTacToe:
     def __init__(self, root):
         self.root = root
         root.title("Tic Tac Toe")
-        root.geometry("660x370")
+        root.geometry("680x365")
         root.resizable(False, False)
         self.current_player = 'X'
         self.clicked = 0
@@ -14,41 +14,41 @@ class TicTacToe:
         
 # creating top left frame for player 1
         self.top_frame_left=tk.Frame(root,bg='black',border=4,height=2,width=40,relief='groove')
-        tk.Label(self.top_frame_left,text="Player1:",font=('Arial', 20),bg='white',fg='black',border=2,relief='solid').grid(row=1,column=0)
-        tk.Label(self.top_frame_left,text="Score: ",font=('Arial', 20),bg='white',fg='black',border=2,relief='solid').grid(row=1,column=1)
+        tk.Label(self.top_frame_left,text="Player1",font=('Arial', 20),bg='black',fg='white',border=2,relief='groove').grid(row=1,column=0)
+        tk.Label(self.top_frame_left,text="Score: ",font=('Arial', 20),bg='black',fg='skyblue',border=2,relief='groove').grid(row=1,column=1)
         self.top_frame_left.grid(row=0,column=0,sticky='nsew')
-        global name1,name2
-        name1=tk.Label(self.top_frame_left,text="Player1",font=('Arial', 20),bg='black',fg='grey')
+        global name1,name2,button
+        name1=tk.Label(self.top_frame_left,text="Name_1",font=('Arial', 20),bg='black',fg='grey')
         name1.grid(row=2,column=0)
 
 # creating middle frame to fill the gap 
         self.top_frame_middle=tk.Frame(root,bg='black',border=4,height=2,width=40,relief='groove')
-        tk.Label(self.top_frame_middle,text="|   TIC TAC TOE   |",font=('Arial', 20),bg='black',fg='Skyblue').pack()
+        tk.Label(self.top_frame_middle,text="|__TIC_TAC_TOE__|",font=('Arial', 20),bg='black',fg='yellow').pack()
         self.top_frame_middle.grid(row=0,column=1,sticky='nsew')
 
 # creating top right frame for player2
         self.top_frame_right=tk.Frame(root,bg='black',border=4,height=2,width=22,relief='groove')
-        tk.Label(self.top_frame_right,text="Player2:",font=('Arial', 20),bg='white',fg='black',border=2,relief='solid').grid(row=1,column=0)
-        tk.Label(self.top_frame_right,text="Score: ",font=('Arial', 20),bg='white',fg='black',border=2,relief='solid').grid(row=1,column=1)
+        tk.Label(self.top_frame_right,text="Player2:",font=('Arial', 20),bg='black',fg='white',border=2,relief='groove').grid(row=1,column=0)
+        tk.Label(self.top_frame_right,text="Score: ",font=('Arial', 20),bg='black',fg='skyblue',border=2,relief='groove').grid(row=1,column=1)
         self.top_frame_right.grid(row=0,column=2,sticky='nsew',ipadx=2)
-        name2 = tk.Label(self.top_frame_right,text="Player2",font=('Arial', 20),bg='black',fg='orange')
+        name2 = tk.Label(self.top_frame_right,text="Name_2",font=('Arial', 20),bg='black',fg='grey')
         name2.grid(row=2,column=0)
 # Creating board and button 
         self.board = [['' for _ in range(3)] for _ in range(3)]
         self.buttons = [[None for _ in range(3)] for _ in range(3)]
         for i in range(3):
             for j in range(3):
-                button = tk.Button(root, text='', font=('Arial', 20),width=1,height=1 ,command=lambda i=i, j=j: self.handle_click(i, j), border=8, relief="sunken",bg='black',fg='green')
+                button = tk.Button(root, text='', font=('Arial', 20),width=1,height=1 ,command=lambda i=i, j=j: self.handle_click(i, j), border=8, relief="sunken",bg='black',fg='white')
                 button.grid(row=i+1, column=j, sticky='nsew',ipadx=2,ipady=2)
                 self.buttons[i][j] = button
 # Start button 
-        start_button = tk.Button(root, text='Start', font=('Arial', 20), command=self.start,border=5,relief='raised',bg='black',fg='green')
+        start_button = tk.Button(root, text='Start', font=('Arial', 20), command=self.start,border=5,relief='groove',bg='black',fg='green')
         start_button.grid(row=4, column=0,  sticky='nsew',ipadx=2,ipady=2)
 # Restart Button 
-        restart_button = tk.Button(root, text='Restart', font=('Arial', 20), command=self.restart,border=5,relief='raised',bg='black',fg='white')
+        restart_button = tk.Button(root, text='Restart', font=('Arial', 20), command=self.restart,border=5,relief='groove',bg='black',fg='white')
         restart_button.grid(row=4, column=1,  sticky='nsew',ipadx=2,ipady=2)
 # finish Button 
-        finish_button = tk.Button(root, text='Finish', font=('Arial', 20), command=self.finish,border=5,relief='raised',bg='black',fg='red')
+        finish_button = tk.Button(root, text='Finish', font=('Arial', 20), command=self.finish,border=5,relief='groove',bg='black',fg='red')
         finish_button.grid(row=4, column=2,  sticky='nsew',ipadx=2,ipady=2)
 
 #  starting game 
@@ -60,12 +60,12 @@ class TicTacToe:
     # declaring name of first player 
             self.name_of_player1 = simpledialog.askstring(title="Name", prompt="Enter the name of first player:")
             name1.config(text=self.name_of_player1.title())
-            s1 = tk.Label(self.top_frame_left,text=self.score_of_player1,font=('Arial', 20),bg='black',fg='grey')
+            s1 = tk.Label(self.top_frame_left,text=self.score_of_player1,font=('Arial', 20),bg='black',fg='blue')
             s1.grid(row=2,column=1)
     # declaring name of second player 
             self.name_of_player2 = simpledialog.askstring(title="Name", prompt="Enter the name of Second player:")
             name2.config(text=self.name_of_player2.title())
-            s2 = tk.Label(self.top_frame_right,text=self.score_of_player2,font=('Arial', 20),bg='black',fg='orange')
+            s2 = tk.Label(self.top_frame_right,text=self.score_of_player2,font=('Arial', 20),bg='black',fg='blue')
             s2.grid(row=2,column=1)
         else:
             messagebox.showinfo("Game Start","Game has already started!")
@@ -79,17 +79,20 @@ class TicTacToe:
             if self.board[row][col] == '':
                 self.board[row][col] = self.current_player
                 self.buttons[row][col].config(text=self.current_player)
+                self.pulsing_fg()
                 if self.check_win():
 
                     if self.current_player == "X":
                         self.current_player = self.name_of_player1
                         self.score_of_player1 += 1
                         s1.config(text = self.score_of_player1)
-                        print(self.score_of_player1 ) 
+                        print(self.score_of_player1 )
+                        # self.pulsing_fg() 
                     else:
                         self.current_player = self.name_of_player2 
                         self.score_of_player2 +=1               
-                        s2.config(text=self.score_of_player2)       
+                        s2.config(text=self.score_of_player2)  
+                        # self.pulsing_fg()     
                     messagebox.showinfo('Game Over', f'{self.current_player} wins!')
                     self.restart()
                 elif self.check_tie():
@@ -97,6 +100,8 @@ class TicTacToe:
                     self.restart()
                 else:
                     self.current_player = 'O' if self.current_player == 'X' else 'X'
+                    
+
         else:
             messagebox.showinfo("Sorry!", "Start the game first")
 # Checking condition for winning the game 
@@ -118,6 +123,13 @@ class TicTacToe:
                 if self.board[i][j] == '':
                     return False
         return True
+
+    def pulsing_fg(cls):
+        fg_colors = ["blue", "red", "green", "orange","white","yellow"]
+        current_color = button["fg"]
+        next_color = fg_colors[(fg_colors.index(current_color) + 1) % len(fg_colors)]
+        button.config(fg=next_color)
+        button.after(50,cls.pulsing_fg) 
 # To restart the game 
     def restart(self):
         ques = messagebox.askquestion("RESTART"," Want to restart ?")
