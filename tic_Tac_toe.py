@@ -79,7 +79,6 @@ class TicTacToe:
             if self.board[row][col] == '':
                 self.board[row][col] = self.current_player
                 self.buttons[row][col].config(text=self.current_player)
-                self.pulsing_fg()
                 if self.check_win():
 
                     if self.current_player == "X":
@@ -87,12 +86,10 @@ class TicTacToe:
                         self.score_of_player1 += 1
                         s1.config(text = self.score_of_player1)
                         print(self.score_of_player1 )
-                        # self.pulsing_fg() 
                     else:
                         self.current_player = self.name_of_player2 
                         self.score_of_player2 +=1               
-                        s2.config(text=self.score_of_player2)  
-                        # self.pulsing_fg()     
+                        s2.config(text=self.score_of_player2)     
                     messagebox.showinfo('Game Over', f'{self.current_player} wins!')
                     self.restart()
                 elif self.check_tie():
@@ -123,13 +120,6 @@ class TicTacToe:
                 if self.board[i][j] == '':
                     return False
         return True
-
-    def pulsing_fg(self):
-        fg_colors = ["blue", "red", "green", "orange","white","yellow"]
-        current_color = button["fg"]
-        next_color = fg_colors[(fg_colors.index(current_color) + 1) % len(fg_colors)]
-        button.config(fg=next_color)
-        button.after(50,self.pulsing_fg) 
 # To restart the game 
     def restart(self):
         ques = messagebox.askquestion("RESTART"," Want to restart ?")
